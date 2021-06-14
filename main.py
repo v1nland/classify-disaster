@@ -10,17 +10,19 @@ from pydantic import BaseModel
 import gensim.models.word2vec as w2v
 
 # project files
-# import query_model
+from classify import Classify
+
 # from helper.utils import getModelRoute
 
 app = FastAPI()
 
 
-# @app.post("/models/{model_name}/similar")
-# def classify_tweet(model_name: str, query: Optional[str] = None):
-#     # model = w2v.Word2Vec.load(getModelRoute(model_name))
+class ClassifyTweetRequest(BaseModel):
+    tweet_data: str
 
-#     # result = query_model.MostSimilar(model, query)
-#     result = []
 
-#     return {"response": result}
+@app.post("/models/{model_name}/classify")
+def exists(model_name: str, req: ClassifyTweetRequest, dim: Optional[int] = 10):
+    tweet_type = Classify(model_name, dim, 0, req.tweet_data)
+
+    return {"type": tweet_type}
