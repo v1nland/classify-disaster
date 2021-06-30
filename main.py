@@ -22,7 +22,7 @@ class ClassifyTweetRequest(BaseModel):
 
 
 @app.post("/models/{model_name}/classify")
-def exists(model_name: str, req: ClassifyTweetRequest, dim: Optional[int] = 10):
+def exists(model_name: str, req: ClassifyTweetRequest, dim: Optional[int] = 16):
     tweet_type = Classify(model_name, dim, 0, req.tweet_data)
 
     return {"type": tweet_type}

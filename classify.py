@@ -18,7 +18,7 @@ def Classify(model, words_per_tweet, tweet_type, tweet_data):
 
     # (x_test, y_test) = LoadTestSetFromApi("earthquake_hurricane", WORDS_PER_TWEET)
     (x_test, y_test) = ConvertTweetFromApi(
-        "earthquake_hurricane", words_per_tweet, tweet_type, tweet_data
+        "nepal_harvey-irma-maria", words_per_tweet, tweet_type, tweet_data
     )
 
     print("Test set loaded successfully")
